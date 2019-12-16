@@ -31,25 +31,6 @@ class Layer:
         return delta.dot(self.weights)
 
 
-'''
-class BidimentionalLayer(Layer):
-    def __init__(self, dim1, dim2):
-        self.weights = np.random.random((dim1 + dim2))
-        self.biases = np.random.random((dim1, dim2[0], 1))
-        self.outputs = np.random.random((dim1, dim2[0], 1))
-        self.inputs = np.random.random((dim1, 1, dim2[1]))
-        self.dim1 = dim1
-        self.dim2 = dim2
-    
-    def update(self, values):
-        self.inputs = np.array(values).reshape((self.dim1, 1, self.dim2[1]))
-        self.outputs = self.activation(self.weights.dot(self.inputs))
-    
-    def adjust(self, error, alpha):
-        pass
-'''
-
-
 class PrimitiveMultiLayer:
     def __init__(self, layer_shape):
         print(layer_shape)
@@ -88,8 +69,6 @@ class Network:
                 else:
                     shape = (self.l_shapes[i][0], self.l_shapes[i][1], (prev[0]*prev[1])//self.l_shapes[i][0])
                 layer = PrimitiveMultiLayer(shape)
-            
-            # layer = Layer((self.l_shapes[i], prev))
 
             self.layers.append(layer)
 
